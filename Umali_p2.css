@@ -1,0 +1,88 @@
+.legend-text {
+    font-size: 12px; /* Adjust the font size as desired */
+}
+
+.legend-textl {
+    font-size: 20px; /* Adjust the font size as desired */
+}
+.xAxis-text {
+    font-size: 8px; /* Adjust the font size as desired */
+}
+.xAxis-text-large{
+  font-size: 15px; /* Adjust the font size as desired */
+}
+.chartTitle {
+    font-size: 20px; /* Adjust the font size as desired */
+    font-weight: bold;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    font-size: 10px;
+    border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+  }
+  
+  /* Tooltip text */
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    padding: 5px 0;
+    border-radius: 6px;
+   
+    /* Position the tooltip text - see examples below! */
+    position: absolute;
+    z-index: 1;
+  }
+  
+  /* Show the tooltip text when you mouse over the tooltip container */
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+  }
+
+
+  /* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  /* Style the buttons that are used to open the tab content */
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    display: none;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  .tab-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999;
+  }

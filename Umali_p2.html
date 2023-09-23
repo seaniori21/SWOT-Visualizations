@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+    
+<head>
+    <link rel="stylesheet" href="Umali_p2.css">
+    <meta charset="utf-8">
+    <title>Umali Project2 for Visualization</title>
+    <script src="d3.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+    <body>
+
+        <h1>SWOT Analysis<h1>
+        <button id="getDataBtn">Get Data</button>
+        <div id="dataContainer">
+            <b id="messageElement"></b>
+        </div>
+        
+        <script>
+            const messageElement = document.getElementById('messageElement');
+            messageElement.style.transition = 'opacity 1s';
+            messageElement.classList.add('fade-in');
+            setTimeout(() => {
+                messageElement.style.opacity = '0';
+            }, 30000); // 3000 milliseconds = 3 seconds
+
+            document.getElementById('getDataBtn').addEventListener('click', function() {
+                fetch('http://127.0.0.1:8080/api/data', {
+                    method: 'GET',
+                    mode: 'cors',
+                })
+                    .then(response => response.text())
+                    .then(data => {
+                        messageElement.innerHTML = data;
+                })
+                    .catch(error => {
+                        console.error('Error:', error);
+                });
+            });
+
+
+        </script>
+
+        <script>
+            function openTab(evt, tab) {
+            // Declare all variables
+            var i, tabcontent, tablinks;
+
+            // Get all elements with class="tabcontent" and hide them
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+
+            // Get all elements with class="tablinks" and remove the class "active"
+            tablinks = document.getElementsByClassName("tablinks");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+
+            // Show the current tab, and add an "active" class to the button that opened the tab
+            document.getElementById(tab).style.display = "block";
+            evt.currentTarget.className += " active";
+            }
+        </script>
+        <div class="tab">
+            <button class="tablinks" onclick="openTab(event, 'SWOT')">SWOT</button>
+            <button class="tablinks" onclick="openTab(event, 'SUM')">SUM</button>
+            <button class="tablinks" onclick="openTab(event, 'TOTALS')">TOTALS</button>
+            <button class="tablinks" onclick="openTab(event, 'MonteCarlo')">MonteCarlo</button>
+        </div>
+
+        
+        <!-- Tab content -->
+        <div id="SWOT" class="tabcontent">
+
+                <div style = "position:relative; left:400px; top:2px;">
+                    <h3>SWOT CHART</h3>
+                </div>
+
+
+            <div style = "position:relative; left:550px; top:0px;">
+                <div id="d4-container">
+                    <script src="SWOTQuadCharts\Umali_WeaknessQuadrant.js">
+                    </script>
+                </div>
+            </div>
+            
+            
+            <div style = "position:relative; left:0px; top:-500px;">
+                <div id="d3-container">
+                    <script src="SWOTQuadCharts\Umali_StrengthQuadrant.js">
+                    </script>
+                </div>
+            </div>
+
+            <div style = "position:relative; left:0px; top:-500px;">
+                <div id="d2-container">
+                    <script src="SWOTQuadCharts\Umali_OpportunityQuadrant.js">
+                    </script>
+                </div>
+            </div>
+            
+            <div style = "position:relative; left:550px; top:-1000px;">
+                <div id="d1-container">
+                    <script src="SWOTQuadCharts\Umali_threatQuadrant.js">
+                    </script>
+                </div>
+            </div>
+        </div>
+
+                      <!-- Tab content -->
+        <div id="SUM" class="tabcontent">
+
+                <div style = "position:relative; left:200px; top:2px;">
+                    <h3>SUMMATION CHARTS</h3>
+                </div>
+
+
+            <div style = "position:relative; left:0px; top:0px;">
+                <div id="d6-container">
+                    <script src="Umali_SumStrength.js">
+                    </script>
+                </div>
+            </div>
+        
+            <div style = "position:relative; left:0px; top:0px;">
+                <div id="d5-container">
+                    <script src="Umali_SumOpportunity.js">
+                    </script>
+                </div>
+            </div>
+
+            <div style = "position:relative; left:450px; top:-800px;">
+                <div id="d7-container">
+                    <script src="Umali_SumThreat.js">
+                    </script>
+                </div>
+            </div>
+
+            <div style = "position:relative; left:450px; top:-800px;">
+                <div id="d8-container">
+                    <script src="Umali_SumWeakness.js">
+                    </script>
+                </div>
+            </div>
+        </div>
+        
+        <div id="TOTALS" class="tabcontent">
+
+                <div style = "position:relative; left:300px; top:2px;">
+                    <h3>TOTALS CHARTS</h3>
+                </div>
+
+
+            <div style = "position:relative; left:0px; top:0px;">
+                <div id="d9-container">
+                    <script src="Umali_Totals.js">
+                    </script>
+                </div>
+            </div>
+        </div>
+
+        <div id="MonteCarlo" class="tabcontent">
+
+                <div style = "position:relative; left:300px; top:2px;">
+                    <h3>Monte Carlo</h3>
+                </div>
+
+
+            <div style = "position:relative; left:0px; top:0px;">
+                <div id="d10-container">
+                    <script src="Umali_MonteCarlo.js">
+                    </script>
+                </div>
+            </div>
+        </div>
+
+
+
+
+    </body>
+</html>
